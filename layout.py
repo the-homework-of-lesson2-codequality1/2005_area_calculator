@@ -1,6 +1,6 @@
 import tkinter
-def create_number_button(root,x1,y1,width1,height1,number1,fg1):
-    btn = tkinter.Button(root,text = number1,font = ('微软雅黑',20),fg = (fg1),bd = 0.5)
+def create_button(root,x1,y1,width1,height1,text1,fg1,function):
+    btn = tkinter.Button(root,text = text1,font = ('微软雅黑',20),fg = (fg1),bd = 0.5,command=function)
     btn.place(x = x1,y = y1,width = width1,height = height1)
     return btn
 def create_main_label(root,anchor1,textvariable1,width1,height1,y1):

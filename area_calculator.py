@@ -13,15 +13,11 @@ hint.set('')
 length1_flag=0
 reset_flag=0
 
-def create_number_button(root,x1,y1,width1,height1,number1,fg1):
-   btn = tkinter.Button(root,text = number1,font = ('微软雅黑',20),fg = (fg1),bd = 0.5)
-   btn.configure(command=lambda:add_number(number1))
-   btn.place(x = x1,y = y1,width = width1,height = height1)
 def add_number(number1):
-   global input_text
+   global input_text 
    input_text=input_text+(str(number1))
    result.set(input_text)
-   reset()
+   reset() 
 def add_dot(number1):
    global input_text
    reset()
@@ -142,16 +138,11 @@ label_input=layout.create_main_label(root,'se',result,280,60,225)
 
 for i in range(3):
   for j in range(3):
-     create_number_button(root,70*j,285+55*i,70,55,7-3*i+j,'#4F4F4F') 
-
-create_number_button(root,70,285+55*3,70,55,0,'#4F4F4F')
-
-button_confirm = tkinter.Button(root,text = '确认',bg = 'orange',font = ('微软雅黑',20),fg = ('#4F4F4F'),bd = 0.5,command=lambda:confirm(unit_var.get(),figure_var.get()))
-button_confirm.place(x = 210,y = 285,width = 70,height = 220)
-button_clear = tkinter.Button(root,text = 'AC',font = ('微软雅黑',20),fg =('#4F4F4F'),bd = 0.5,command=lambda:clear())
-button_clear.place(x = 0,y = 450,width = 70,height = 55)
-button_dot = tkinter.Button(root,text = '.',font = ('微软雅黑',20),fg = ('#4F4F4F'),bd = 0.5,command=lambda:add_dot('.'))
-button_dot.place(x = 140,y = 450,width = 70,height = 55)
+     layout.create_button(root,70*j,285+55*i,70,55,7-3*i+j,'#4F4F4F',lambda n=i,m=j:add_number(7-3*n+m)) 
+layout.create_button(root,70,285+55*3,70,55,0,'#4F4F4F',lambda:add_number(0))
+layout.create_button(root,210,285,70,220,'确认','#4F4F4F',lambda:confirm(unit_var.get(),figure_var.get())).configure(bg='orange')
+layout.create_button(root,0,450,70,55,'AC','#4F4F4F',lambda:clear())
+layout.create_button(root,140,450,70,55,'.','#4F4F4F',lambda:add_dot('.'))
 root.mainloop()
 
 
